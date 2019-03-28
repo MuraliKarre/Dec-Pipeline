@@ -1,13 +1,13 @@
 pipeline
 {
-    agent any
+    agent {label 'slave'}
     stages
     {
         stage('ContDownload')
         {
             steps
             {
-                git 'https://github.com/selenium-saikrishna/maven.git'
+                git 'https://github.com/MuraliKarre/maven.git'
             }
         }
         stage('ContBuild')
@@ -28,7 +28,7 @@ pipeline
         {
             steps
             {
-                git 'https://github.com/selenium-saikrishna/TestingOnLinux.git'
+                git 'https://github.com/MuraliKarre/TestingOnLinux.git'
                 sh 'java -jar  /var/lib/jenkins/workspace/Declarative_Pipeline/testing.jar'
             }
         }
