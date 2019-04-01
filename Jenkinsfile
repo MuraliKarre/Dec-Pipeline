@@ -38,7 +38,14 @@ pipeline {
             {
                 sh 'scp /var/lib/jenkins/workspace/demo/webapp/target/webapp.war ubuntu@13.233.93.49:/opt/tomcat/webapps/qaenv.war'
             }
+            failure
+        {
+            mail bcc: '', body: '', cc: '', from: '', replyTo: '', subject: 'Build failed', to: 'gandham.saikrishna@gmail.com'
+            
+        }     
         }
+        
+        
  
         
      }
