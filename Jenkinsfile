@@ -20,7 +20,7 @@ pipeline {
         {
             steps
             {
-                sh 'scp /var/lib/jenkins/workspace/demo/webapp/target/webapp.war ubuntu@13.233.93.49:/opt/tomcat/webapps/qaenv.war'
+                sh 'scp /var/lib/jenkins/workspace/demo/webapp/target/webapp.war ubuntu@13.233.179.24:/opt/tomcat/webapps/qaenv.war'
             }
         }
         stage('ContTesting')
@@ -36,17 +36,16 @@ pipeline {
         {
             steps
             {
-                sh 'scp /var/lib/jenkins/workspace/demo/webapp/target/webapp.war ubuntu@13.233.93.49:/opt/tomcat/webapps/qaenv.war'
+                input message: 'Waiting for Delivery', submitter: 'admin'
+                sh 'scp /var/lib/jenkins/workspace/demo/webapp/target/webapp.war ubuntu@13.233.179.24:/opt/tomcat/webapps/prod.war'
             }
             failure
         {
-            mail bcc: '', body: '', cc: '', from: '', replyTo: '', subject: 'Build failed', to: 'gandham.saikrishna@gmail.com'
+            mail bcc: '', body: '', cc: '', from: '', replyTo: '', subject: 'Build failed', to: 'karremurali@gmail.com'
             
         }     
         }
         
-        
- 
         
      }
       
